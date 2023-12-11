@@ -1,2 +1,2 @@
 # Resume_Builder
-Online Resu,e Builder Using HTML CSS &amp; JAVASCRIPT
+Online Resume Builder Using HTML CSS &amp; JAVASCRIPT
