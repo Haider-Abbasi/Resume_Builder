@@ -55,3 +55,16 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//Resume Analyzer
+Route::get('/uploadResume',function(){
+    return view('uploadResume'); 
+});
+
+Route::post('/uploadResume', [ProfileController::class, 'uploadResume']);
+
+
+
+
+
+
