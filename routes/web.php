@@ -40,9 +40,6 @@ Route::get('/upload', function () {
 Route::get('/resume', function () {
     return view('resumeBuilder');
 })->name('resume');
-// Route::get('/resume', function () {
-//     return view('makeResume');
-// })->middleware(['auth', 'verified'])->name('resume');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
