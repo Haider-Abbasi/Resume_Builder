@@ -18,6 +18,7 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'extracted_skill_name' => ['nullable', 'string', 'max:1000'], // Add validation rules for extracted_skill_name field
         ];
     }
 }
