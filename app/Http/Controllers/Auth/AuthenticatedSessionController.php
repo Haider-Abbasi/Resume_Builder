@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,7 +30,32 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME);
+
+        // Get the authenticated user
+        $user = $request->user();
+
+
+
+        // Save user ID in session
+        if ($user) {
+            Session::put('user_id', $user->id);
+        }
+
+
+        // Check the user_type
+        if ($user && $user->user_type === 'admin') {
+            // Redirect admin to admin dashboard
+            return redirect()->route('admindashboard');
+        } elseif ($user && $user->user_type === 'user') {
+            // Redirect user to user dashboard
+            return redirect()->route('dashboard');
+        } else {
+            // Handle other user types or scenarios
+            return redirect()->route('otherdashboard');
+        }
+
+
     }
 
     /**
