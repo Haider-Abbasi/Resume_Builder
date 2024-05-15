@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'extracted_skill_name',
+        'user_type',
     ];
 
     /**
