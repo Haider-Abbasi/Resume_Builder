@@ -47,6 +47,12 @@
             @endif
         </div>
 
+        <div>
+    <x-input-label for="extracted_skill_name" :value="__('Extracted Skill Name')" />
+    <x-text-input id="extracted_skill_name" name="extracted_skill_name" type="text" class="mt-1 block w-full" :value="old('extracted_skill_name', $user->extracted_skill_name)" required autofocus autocomplete="extracted_skill_name" />
+    <x-input-error class="mt-2" :messages="$errors->get('extracted_skill_name')" />
+</div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
