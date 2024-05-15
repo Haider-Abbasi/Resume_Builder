@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Career Catalyst - Upload Resume</title>
+    <title>Career Catalyst - CV Analyzer</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,11 +21,10 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     @vite(['resources/css/bootstrap.min.css'])
-    @vite(['resources/css/style.css'])
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .main-body {
+            font-family: 'Open Sans', sans-serif;
             background-image: url('https://images.unsplash.com/photo-1531923508017-950c43a0eef0');
             background-size: cover;
             background-repeat: no-repeat;
@@ -34,8 +33,8 @@
             padding: 0;
         }
 
-        .container {
-            max-width: 800px;
+        .main-content {
+            max-width: 90%;
             margin: 50px auto;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
@@ -43,19 +42,20 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
+        .main-content h2 {
             text-align: center;
             margin-bottom: 30px;
             color: #333;
         }
 
-        form {
+        .main-content form {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-top: 20px;
         }
 
-        input[type="file"] {
+        .main-content input[type="file"] {
             width: 100%;
             margin-bottom: 20px;
             padding: 10px;
@@ -64,7 +64,7 @@
             box-sizing: border-box;
         }
 
-        button[type="submit"] {
+        .main-content button[type="submit"] {
             width: 50%;
             padding: 12px;
             border: none;
@@ -76,18 +76,52 @@
             transition: background-color 0.3s ease;
         }
 
-        button[type="submit"]:hover {
+        .main-content button[type="submit"]:hover {
             background-color: #0056b3;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hh3 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .feature-item p {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
         }
     </style>
 </head>
 
-<body>
+<body class="main-body">
 
     @include('components.header')
 
-    <div class="container">
-        <h2>Upload PDF File</h2>
+    <div class="main-content">
+        <div class="features">
+            <div class="feature-item">
+                <h2>CV Analyzer</h2>
+                <p>Upload your CV to analyze your skills and qualifications. Our system extracts key information to help you understand your strengths.</p>
+            </div>
+        </div>
+        <div class="hh3">
+        <h3>Upload Your CV</h3>
+        </div>
 
         <form action="{{url('/uploadResume')}}" method="post" enctype="multipart/form-data">
             @csrf
